@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="objectiveApp">
+<head>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <title>Objective</title>
+  <link rel="shortcut icon" href="images/paulLogo.png" type="image/png">
+
+</head>
+<body ng-controller="mainController">
+
+  <table>
+    <tr>
+      <th>Job</th>
+      <th class="nowrap">Applicant Name</th>
+      <th>Email Address</th>
+      <th>Website</th>
+      <th>Skills</th>
+      <th>Cover Letter Paragraph</th>
+    </tr>
+    <tr ng-repeat="skill in skills">
+      <td class="centerText" ng-if="!skill.applicantCounter && !skill.skillCounter" rowspan="{{jobs[skill.jobId].applicantSkillCount}}">{{skill.jobName}}</td>
+      <td class="nowrap" ng-if="!skill.skillCounter" rowspan="{{jobs[skill.jobId].applicants[skill.applicantId].skills.length}}">{{skill.applicantName}}</td>
+      <td ng-if="!skill.skillCounter" rowspan="{{jobs[skill.jobId].applicants[skill.applicantId].skills.length}}"><a
+          href="">{{skill.applicantEmail}}</a></td>
+      <td ng-if="!skill.skillCounter" rowspan="{{jobs[skill.jobId].applicants[skill.applicantId].skills.length}}"><a
+          href="">{{skill.applicantWebsite}}</a></td>
+      <td>{{skill.skill}}</td>
+      <td ng-if="!skill.skillCounter" rowspan="{{jobs[skill.jobId].applicants[skill.applicantId].skills.length}}">{{skill.applicantCoverLetter}}</td>
+    </tr>
+  </table>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
